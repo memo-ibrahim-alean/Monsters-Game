@@ -16,12 +16,43 @@ const monster = {
   diceCount: 1,
 };
 
+/*
+Challenge
+1. Create a function called getDiceHtml.
+2. getDiceHtml should map over the array of dice rolls
+   returned from getDiceRollArray to generate the html
+   we need to render our dice with random values. This is
+   the HTML: `<div class="dice">DICE VALUE HERE</div>`
+3. Think about the parameters and arguments!
+4. Down in renderCharacter(), set diceHtml equals to our
+   new getDiceHtml function. Remember to give it the argument
+   it needs.
+5. Delete any code we no longer need.
+**hint.md for help**
+*/
+
+function getDiceHtml(diceCount) {
+  return getDiceRollArray(diceCount)
+    .map(function (num) {
+      return `<div class="dice">${num}</div>`;
+    })
+    .join(" ");
+}
+
+function getDiceRollArray(diceCount) {
+  const newDiceRolls = [];
+
+  for (let i = 0; i < diceCount; i++) {
+    newDiceRolls.push(Math.floor(Math.random() * 6) + 1);
+  }
+
+  return newDiceRolls;
+}
+
 function renderCharacter(data) {
   const { elementId, name, avatar, health, diceRoll, diceCount } = data;
 
-  const diceHtml = diceRoll.map(function (roll) {
-    return `<div class="dice">${roll}</div>`
-  });
+  const diceHtml = getDiceHtml(diceCount);
 
   document.getElementById(elementId).innerHTML = `
   <div class="character-card">
@@ -29,7 +60,7 @@ function renderCharacter(data) {
       <img class="avatar" src="${avatar}" />
       <div class="health">health: <b> ${health} </b></div>
       <div class="dice-container">
-            ${diceHtml.join(' ')}
+            ${diceHtml}
       </div>
    </div>
    `;
