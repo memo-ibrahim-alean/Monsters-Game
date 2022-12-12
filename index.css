@@ -18,6 +18,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  width: 100vw;
   align-items: center;
   margin-top: 0.5rem;
 }
@@ -160,7 +161,7 @@ main {
   line-height: 6vh;
 }
 
-@media (min-width: 550px) {
+@media (max-width: 550px) {
   .dice-container .dice,
   .dice-container .placeholder-dice {
     height: 10vh;
