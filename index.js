@@ -14,6 +14,14 @@ const monster = {
   diceCount: 1,
 };
 
+function Character(data) {
+  this.elementId = data.elementId;
+  this.name = data.name;
+  this.avatar = data.avatar;
+  this.health = data.health;
+  this.diceCount = data.diceCount;
+}
+
 function getDiceHtml(diceCount) {
   return getDiceRollArray(diceCount)
     .map(function (num) {
@@ -23,7 +31,7 @@ function getDiceHtml(diceCount) {
 }
 
 function getDiceRollArray(diceCount) {
-  return new Array(diceCount).fill(0).map(function (ele) {
+  return new Array(diceCount).fill(0).map(function () {
     return Math.floor(Math.random() * 6) + 1;
   });
 }
