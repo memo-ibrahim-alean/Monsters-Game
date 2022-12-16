@@ -34,7 +34,7 @@ main {
 }
 
 .character-card {
-  height: 14rem;
+  height: 18rem;
   margin-top: 0.5rem;
   width: 94vw;
   max-width: 230px;
@@ -54,8 +54,8 @@ main {
 @media (min-width: 550px) {
   .character-card {
     border: 0.2rem solid #000721;
-    height: 26rem;
-    width: 37vw;
+    height: 32rem;
+      width: 37vw;
   }
 }
 
@@ -89,7 +89,7 @@ main {
 }
 
 .health {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: normal;
   width: 90%;
   text-align: left;
@@ -161,12 +161,15 @@ main {
   line-height: 6vh;
 }
 
-@media (max-width: 550px) {
+@media (min-width: 550px) {
   .dice-container .dice,
   .dice-container .placeholder-dice {
-    height: 10vh;
-    width: 10vh;
-    line-height: 10.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    width: 8vh;
+    line-height: 10vh;
   }
 }
 
