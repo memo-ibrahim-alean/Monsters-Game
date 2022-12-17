@@ -4,4 +4,4 @@ function getDiceRollArray(diceCount) {
   });
 }
 
-export default getDiceRollArray;
+export  {getDiceRollArray};
