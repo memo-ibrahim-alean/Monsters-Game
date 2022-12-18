@@ -4,7 +4,8 @@ import Character from "./Character.js";
 function attack() {
   wizard.getDiceHtml();
   orc.getDiceHtml();
-  orc.takeDamage();
+  orc.takeDamage(wizard.currentDiceScore);
+  wizard.takeDamage(orc.currentDiceScore);
   render();
 }
 
