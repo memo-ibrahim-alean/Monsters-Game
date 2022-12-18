@@ -5,8 +5,21 @@ function Character(data) {
   this.diceArray = getDicePlaceholderHtml(this.diceCount);
 
   this.takeDamage = function (attackScoreArray) {
-    console.log(`${this.name}: ${attackScoreArray}`);
+    const totalAttackScore = attackScoreArray.reduce(function (total, currentEle) {
+      return total + currentEle;
+    });
+
+    this.health -= totalAttackScore;
+
+    console.log(`totalAttackScore: ${totalAttackScore}`);
+
+    // console.log(
+    //   `${this.name} = ${this.health} - ${totalAttackScore} = ${
+    //     this.health - totalAttackScore
+    //   }`
+    // );
   };
+
   this.getDiceHtml = function () {
     this.currentDiceScore = getDiceRollArray(this.diceCount);
     this.diceArray = this.currentDiceScore
