@@ -6,7 +6,7 @@
   - [Links](#links)
   - [How to install](#how-to-install)
 - [My process](#my-process)
-  - [Requirments](#What I learned)
+  - [What I learned](#What-I-learned)
 
 ## Overview
 
