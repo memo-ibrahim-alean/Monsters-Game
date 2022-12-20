@@ -11,8 +11,7 @@
 ## Overview
 
 ### The challenge
-
-Restaurant Ordering app
+Monsters Game
 
 ### Screenshot
 
