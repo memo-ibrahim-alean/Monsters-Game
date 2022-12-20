@@ -2,6 +2,7 @@ import characterData from "./data.js";
 import Character from "./Character.js";
 
 let monstersArray = ["orc", "demon", "goblin"];
+let isWaiting = false;
 
 function getNewMonster() {
   const nextMonsterData = characterData[monstersArray.shift()];
@@ -9,19 +10,25 @@ function getNewMonster() {
 }
 
 function attack() {
-  wizard.getDiceHtml();
-  monster.getDiceHtml();
-  monster.takeDamage(wizard.currentDiceScore);
-  wizard.takeDamage(monster.currentDiceScore);
-  render();
-  if (wizard.dead) {
-    endGame();
-  } else if (monster.dead) {
-    if (monstersArray.length > 0) {
-      monster = getNewMonster();
-      render();
-    } else {
+  if (!isWaiting) {
+    wizard.getDiceHtml();
+    monster.getDiceHtml();
+    monster.takeDamage(wizard.currentDiceScore);
+    wizard.takeDamage(monster.currentDiceScore);
+    render();
+    if (wizard.dead) {
       endGame();
+    } else if (monster.dead) {
+      isWaiting = true;
+      if (monstersArray.length > 0) {
+        setTimeout(() => {
+          monster = getNewMonster();
+          render();
+          isWaiting = false;
+        }, 1400);
+      } else {
+        endGame();
+      }
     }
   }
 }
@@ -34,14 +41,15 @@ function endGame() {
       ? "The Wizard Wins"
       : "The Orc is Victorious";
   const endEmoji = wizard.health > 0 ? "🔮" : "☠️";
-
-  document.body.innerHTML = `
+  setTimeout(() => {
+    document.body.innerHTML = `
       <div class="end-game">
         <h2>Game Over</h2>
         <h3>${endMessage}</h3>
         <p class="end-emoji">${endEmoji}</p>
       </div>
       `;
+  }, 1500);
 }
 
 function render() {
