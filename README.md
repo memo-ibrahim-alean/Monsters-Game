@@ -20,7 +20,7 @@ Monsters Game
 ### Links
 
 - Solution URL: [GitHub](https://github.com/memo-ibrahim-alean/Monsters-Game)
-- Live Site URL: [Live](https://memo-ibrahim-alean.github.io/Monsters-Game/)
+- Live Site URL: [Live](https://monsters-game.netlify.app/)
 
 ### How to install
 
