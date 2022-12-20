@@ -16,7 +16,7 @@ Restaurant Ordering app
 
 ### Screenshot
 
-![screenshot](./images/screenshoot.png)
+![screenshot](./images/screenshoot.PNG)
 
 ### Links
 
