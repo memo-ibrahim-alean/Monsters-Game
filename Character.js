@@ -8,7 +8,7 @@ function Character(data) {
   Object.assign(this, data);
 
   this.maxHealth = this.health;
-  this.diceArray = getDicePlaceholderHtml(this.diceCount);
+  this.diceHtml = getDicePlaceholderHtml(this.diceCount);
 
   this.takeDamage = function (attackScoreArray) {
     const totalAttackScore = attackScoreArray.reduce(
@@ -32,27 +32,27 @@ function Character(data) {
             </div>
         </div>`;
   };
-  this.getDiceHtml = function () {
+  this.setDiceHtml = function () {
     this.currentDiceScore = getDiceRollArray(this.diceCount);
-    this.diceArray = this.currentDiceScore
+    this.diceHtml = this.currentDiceScore
       .map((num) => `<div class="dice">${num}</div>`)
       .join("");
   };
 
   this.getCharacterHtml = function () {
-    const { name, avatar, health, diceCount, diceArray } = this;
+    const { name, avatar, health, diceCount, diceHtml } = this;
 
     const healthBar = this.getHealthBarHtml();
 
     return `
     <div class="character-card">
-    <h4 class="name"> ${name} </h4>
-    <img class="avatar" src="${avatar}" />
-    <div class="health">health: <b> ${health} </b></div>
-    ${healthBar}
-    <div class="dice-container">
-    ${diceArray}
-    </div>
+      <h4 class="name"> ${name} </h4>
+      <img class="avatar" src="${avatar}" />
+      <div class="health">health: <b> ${health} </b></div>
+        ${healthBar}
+      <div class="dice-container">
+        ${diceHtml}
+      </div>
     </div>
     `;
   };

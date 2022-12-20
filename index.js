@@ -11,8 +11,8 @@ function getNewMonster() {
 
 function attack() {
   if (!isWaiting) {
-    wizard.getDiceHtml();
-    monster.getDiceHtml();
+    wizard.setDiceHtml();
+    monster.setDiceHtml();
     monster.takeDamage(wizard.currentDiceScore);
     wizard.takeDamage(monster.currentDiceScore);
     render();
@@ -25,7 +25,7 @@ function attack() {
           monster = getNewMonster();
           render();
           isWaiting = false;
-        }, 1400);
+        }, 1300);
       } else {
         endGame();
       }
@@ -34,6 +34,7 @@ function attack() {
 }
 
 function endGame() {
+  isWaiting = true;
   const endMessage =
     wizard.health === 0 && monster.health === 0
       ? "No victors - all creatures are dead"
@@ -49,7 +50,7 @@ function endGame() {
         <p class="end-emoji">${endEmoji}</p>
       </div>
       `;
-  }, 1500);
+  }, 1400);
 }
 
 function render() {
